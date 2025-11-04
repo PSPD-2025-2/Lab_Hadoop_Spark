@@ -1,14 +1,58 @@
 <configuration>
-  <property>
-    <name>mapreduce.framework.name</name>
-    <value>yarn</value>
-  </property>
-  <property>
-    <name>mapreduce.jobhistory.address</name>
-    <value>jhs:10020</value>
-  </property>
-  <property>
-    <name>mapreduce.jobhistory.webapp.address</name>
-    <value>jhs:19888</value>
-  </property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+    <!-- Tamanho do AM do MapReduce (porquê: caber nos limites) -->
+    <property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>256</value>
+    </property>
+    <property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx200m</value>
+    </property>
+
+    <!-- Tamanho das tasks -->
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>256</value>
+    </property>
+    <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx200m</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>256</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.java.opts</name>
+        <value>-Xmx200m</value>
+    </property>
+
+    <!-- JobHistory, já estava OK -->
+    <property>
+        <name>mapreduce.jobhistory.address</name>
+        <value>jhs:10020</value>
+    </property>
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>jhs:19888</value>
+    </property>
+
+    <property>
+        <name>yarn.app.mapreduce.am.env</name>
+        <value>HADOOP_MAPRED_HOME=/home/hadoop/hadoop</value>
+    </property>
+    <property>
+        <name>mapreduce.map.env</name>
+        <value>HADOOP_MAPRED_HOME=/home/hadoop/hadoop</value>
+    </property>
+    <property>
+        <name>mapreduce.reduce.env</name>
+        <value>HADOOP_MAPRED_HOME=/home/hadoop/hadoop</value>
+    </property>
+
 </configuration>

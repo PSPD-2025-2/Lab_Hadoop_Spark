@@ -1,10 +1,81 @@
 <configuration>
-  <property>
-    <name>yarn.resourcemanager.hostname</name>
-    <value>rm</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
-  </property>
+    <!-- RM hostname já está ok -->
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>rm</value>
+    </property>
+
+    <!-- Recursos anunciados por cada NodeManager (porquê: em Docker o auto-detect pode falhar) -->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>2048</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>2</value>
+    </property>
+
+    <!-- Granularidade do scheduler (porquê: garantir que o AM/containers cabem) -->
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>128</value>
+    </property>
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>2048</value>
+    </property>
+
+    <!-- Serviço de shuffle necessário para MapReduce -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <!-- Evitar falso-positivo de “unhealthy” por vmem em containers -->
+    <property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>/home/hadoop/yarn/local</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>/home/hadoop/yarn/logs</value>
+    </property>
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <!-- Evita falso negativo de disco em Docker -->
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.min-healthy-disks</name>
+        <value>0.0</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage</name>
+        <value>99.0</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.disk-health-checker.min-free-space-per-disk-mb</name>
+        <value>32</value>
+    </property>
+    <property>
+        <name>yarn.application.classpath</name>
+        <value>
+            $HADOOP_CONF_DIR,
+            $HADOOP_COMMON_HOME/share/hadoop/common/*,
+            $HADOOP_COMMON_HOME/share/hadoop/common/lib/*,
+            $HADOOP_HDFS_HOME/share/hadoop/hdfs/*,
+            $HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,
+            $HADOOP_YARN_HOME/share/hadoop/yarn/*,
+            $HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,
+            $HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*
+        </value>
+    </property>
+
+
 </configuration>
