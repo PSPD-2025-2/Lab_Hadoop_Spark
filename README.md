@@ -106,18 +106,6 @@ O WordCount é um exemplo oficial do Hadoop, disponível no diretório:
 ```
 $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar
 ```
-
-Execute:
-
-```bash
-EX=$(ls /home/hadoop/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar | head -n1)
-OUT=/output-$(date +%s)
-/home/hadoop/hadoop/bin/hadoop jar "$EX" wordcount /input "$OUT"
-hdfs dfs -cat "$OUT/part-r-00000" | head
-```
-
-## Testando com arquivo próprio
-
 1. Crie o arquivo de entrada:
 
 ```bash
