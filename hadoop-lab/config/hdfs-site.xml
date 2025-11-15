@@ -11,4 +11,10 @@
     <name>dfs.datanode.data.dir</name>
     <value>file:///home/hadoop/data/datanode</value>
   </property>
+  <property>
+    <name>dfs.blocksize</name>
+    <!-- <value>67108864</value> --> <!-- 64MB -->
+    <!-- <value> 268435456 </value> --> <!-- 256MB -->
+     <value> 134217728 </value> <!-- 128MB -->
+  </property>
 </configuration>
