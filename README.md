@@ -84,10 +84,14 @@ docker compose ps
 
 ## Testando o HDFS
 
-Dentro do contêiner `edge`:
+Acesse o contêiner `edge`:
 
 ```bash
 docker compose exec edge bash
+```
+
+Dentro do contêiner `edge`:
+```bash
 # criar diretório e enviar arquivos
 hdfs dfs -mkdir -p /input
 hdfs dfs -put $HADOOP_HOME/etc/hadoop/*.xml /input
@@ -117,22 +121,18 @@ hdfs dfs -cat "$OUT/part-r-00000" | head
 1. Crie o arquivo de entrada:
 
 ```bash
-docker compose exec edge bash -lc '
 printf "um\ndois\ndois\ntres tres tres\n" > /tmp/input.txt
 hdfs dfs -mkdir -p /jobs
 hdfs dfs -put -f /tmp/input.txt /jobs/input.txt
-'
 ```
 
 2. Execute o WordCount sobre o arquivo:
 
 ```bash
-docker compose exec edge bash -lc '
 EX=$(ls /home/hadoop/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar | head -n1)
 OUT=/jobs-out-$(date +%s)
 /home/hadoop/hadoop/bin/hadoop jar "$EX" wordcount /jobs/input.txt "$OUT"
 hdfs dfs -cat "$OUT/part-r-00000"
-'
 ```
 
 **Saída esperada:**
@@ -142,6 +142,28 @@ dois    2
 tres    3
 um      1
 ```
+
+## Testando com um arquivo grande:
+
+Gere um arquivo grande o suficiente e envie para o HDFS:
+
+```bash
+yes "lorem ipsum dolor sit amet" | head -n 300000000 > /tmp/big.txt
+hdfs dfs -put /tmp/big.txt /jobs/big.txt
+```
+
+Execute o WordCount:
+
+```bash
+EX=$(ls /home/hadoop/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar | head -n1)
+hadoop jar "$EX" wordcount /jobs/big.txt /jobs-out-baseline
+```
+
+Depois veja os termos mais frequentes:
+```bash
+hdfs dfs -cat /jobs-out-baseline/part-r-00000
+```
+
 
 ## 🌐 Acessando as Interfaces Web
 
