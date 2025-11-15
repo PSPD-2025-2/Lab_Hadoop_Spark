@@ -332,9 +332,6 @@ Mesmo com essas limitações, o benchmark é útil para fins didáticos, pois ev
 - Como **ajustes de memória** podem trazer ganhos marginais em jobs que não são estritamente bound a RAM.
 - Que o **overhead de gerenciamento do Hadoop** é relevante, principalmente em ambientes pequenos, e deve ser considerado ao dimensionar clusters de produção.
 
-> [!important] Detalhes
-> Para mais informações sobre as execuções dos jobs, consulte os PDFs gerados pelo JobHistoryServer, disponíveis na seção de [anexos](./hadoop-lab/assets/) deste relatório.
-
 # 12. Conclusão
 
 O pipeline desenvolvido demonstrou que a integração entre Kafka, Spark Structured Streaming, Elasticsearch e Kibana é altamente eficiente para processamento de dados em tempo real, apresentando baixa latência, alta estabilidade e boa capacidade de escalabilidade conforme o volume de mensagens aumenta. Apesar dos resultados positivos, algumas limitações foram identificadas, como a necessidade de ajustes finos de configuração (memória, particionamento, batch sizes), a dependência de hardware adequado para manter o desempenho e a sensibilidade à qualidade dos dados recebidos no início do fluxo. Como trabalhos futuros, propõe-se a integração com Spark MLlib para análises avançadas, aprimoramento das estratégias de otimização do pipeline, implementação de monitoramento contínuo, desenvolvimento de dashboards mais completos no Kibana e a migração da solução para um ambiente em nuvem, utilizando ferramentas de orquestração como Apache Airflow ou Prefect.
