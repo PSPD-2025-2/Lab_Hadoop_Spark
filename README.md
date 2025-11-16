@@ -2,11 +2,13 @@
 
 # Experimentos com Hadoop e Spark
 
-**Curso:** Engenharia de Software – UnB
-**Disciplina:** Programação de Sistemas Paralelos e Distribuídos (PSPD)
-**Professor:** Fernando W. Cruz
-**Integrantes do Grupo:** Gabryel Nicolas; Guilherme Westphall Queiroz; Joel Soares Rangel; Lucas Martins Gabriel
-**Data:** 15 de Novembro de 2025
+- **Curso:** Engenharia de Software – UnB
+- **Disciplina:** Programação de Sistemas Paralelos e Distribuídos (PSPD)
+- **Professor:** Fernando W. Cruz
+- **Integrantes do Grupo:** Gabryel Nicolas; Guilherme Westphall Queiroz; Joel Soares Rangel; Lucas Martins Gabriel
+- **Data:** 15 de Novembro de 2025
+
+> Para informações sobre a configuração do ambiente Hadoop e Spark utilizados, consulte os arquivos `hadoop-lab/README.md` e `spark-streaming/README.md` neste repositório.
 
 ## Introdução
 
@@ -203,7 +205,7 @@ Mesmo com essas limitações, o benchmark é útil para fins didáticos, pois ev
 - Como **ajustes de memória** podem trazer ganhos marginais em jobs que não são estritamente bound a RAM.
 - Que o **overhead de gerenciamento do Hadoop** é relevante, principalmente em ambientes pequenos, e deve ser considerado ao dimensionar clusters de produção.
 
-> [!important] Detalhes
+> [!IMPORTANT] Detalhes
 > Para mais informações sobre as execuções dos jobs, consulte os PDFs gerados pelo JobHistoryServer, disponíveis na seção de [anexos](./hadoop-lab/assets/) deste relatório.
 
 ## Teste de Tolerância a Falhas no Hadoop
