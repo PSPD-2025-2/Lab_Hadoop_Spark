@@ -5,10 +5,10 @@
 - **Curso:** Engenharia de Software – UnB
 - **Disciplina:** Programação de Sistemas Paralelos e Distribuídos (PSPD)
 - **Professor:** Fernando W. Cruz
-- **Integrantes do Grupo:** Gabryel Nicolas; Guilherme Westphall Queiroz; Joel Soares Rangel; Lucas Martins Gabriel
+- **Integrantes do Grupo:** Gabryel Nicolas Soares de Sousa; Guilherme Westphall de Queiroz; Joel Soares Rangel; Lucas Martins Gabriel
 - **Data:** 15 de Novembro de 2025
 
-> Para informações sobre a configuração do ambiente Hadoop e Spark utilizados, consulte os arquivos `hadoop-lab/README.md` e `spark-streaming/README.md` neste repositório.
+> Para informações sobre a configuração do ambiente Hadoop e Spark utilizados, consulte os arquivos `hadoop-lab/README.md` e `spark-lab/README.md` neste repositório.
 
 ## Introdução
 
@@ -277,7 +277,7 @@ Com ambos os DataNodes fora do ar:
 Quando os DataNodes voltam ao ar:
 
 - O NameNode detecta novamente os blocos.
-- YARN reroda as tasks necessárias.
+- YARN reexecuta as tasks necessárias.
 - O job volta a avançar normalmente.
 
 Isso mostra corretamente que:
@@ -372,7 +372,9 @@ Criação do tópico Kafka:
     - Dividir o texto em palavras (tokenização).
     - Aplicar uma agregação de contagem (WordCount) sobre uma janela temporal de 5 segundos.
     - Escrever os resultados (em formato JSON) no tópico canaloutput.
-3. **Visualização no Kibana**: O Kafka Connect atuou como uma "cola", movendo os dados do canaloutput para o ElasticSearch. No Kibana, criamos uma visualização Tag Cloud. Quando enviávamos mensagens no Discord (ex: "PSPD" repetidamente), a palavra "PSPD" aparecia e crescia na nuvem de palavras em tempo real, confirmando o sucesso do pipeline fim-a-fim
+3. **Visualização no Kibana**: O Kafka Connect atuou como uma "cola", movendo os dados do canaloutput para o ElasticSearch. No Kibana, criamos uma visualização Tag Cloud. Quando enviávamos mensagens no Discord (ex: "PSPD" repetidamente), a palavra "PSPD" aparecia e crescia na nuvem de palavras em tempo real, confirmando o sucesso do pipeline fim-a-fim. Abaixo, uma captura de tela do dashboard Kibana exibindo a nuvem de palavras gerada a partir do *lorem ipsum* enviado via Discord:
+
+![Kibana Tag Cloud](./spark-lab/assets/kibana_tag_cloud.png)
 
 ### Dificuldades e Aprendizado:
 
@@ -391,3 +393,26 @@ Os experimentos permitiram uma comparação prática direta entre os dois paradi
 Concluímos que a escolha da ferramenta depende fundamentalmente dos requisitos do problema. Hadoop é a escolha para batch offline robusto, enquanto Spark e seu ecossistema brilham em cenários que exigem baixa latência e análise contínua
 
 > Para mais detalhes técnicos, códigos-fonte e arquivos de configuração utilizados, veja a implementação direta nos diretórios do repositório [hadoop-lab](./hadoop-lab/) e [spark-lab](./spark-lab/).
+
+## Refêrencias
+
+APACHE SOFTWARE FOUNDATION. *Apache Kafka – Documentation*. Disponível em: https://kafka.apache.org. Acesso em: 15 nov. 2025.
+
+APACHE SOFTWARE FOUNDATION. *Apache Spark – Structured Streaming Guide*. Disponível em: https://spark.apache.org. Acesso em: 15 nov. 2025.
+
+APACHE SOFTWARE FOUNDATION. *Apache Hadoop – MapReduce Tutorial*. Disponível em: https://hadoop.apache.org. Acesso em: 15 nov. 2025.
+
+ELASTICSEARCH B.V. *Elasticsearch: The Definitive Guide*. Disponível em: https://www.elastic.co/guide. Acesso em: 15 nov. 2025.
+
+ELASTICSEARCH B.V. *Kibana Documentation*. Disponível em: https://www.elastic.co/kibana. Acesso em: 15 nov. 2025.
+
+DISCORD INC. *Discord Developer Portal – Bots and Gateway Documentation*. Disponível em: https://discord.com/developers. Acesso em: 15 nov. 2025.
+
+NGROK. *Ngrok Documentation*. Disponível em: https://ngrok.com/docs. Acesso em: 15 nov. 2025.
+
+GARCIA-MOLINA, H.; ULLMAN, J. D.; WIDOM, J. *Banco de Dados – Sistemas de Banco de Dados*. 2. ed. Rio de Janeiro: LTC, 2008.
+
+STONEBRAKER, M.; ÇETINTEMEL, U. *“One Size Fits All”: An Idea Whose Time Has Come and Gone*. Communications of the ACM, v. 51, n. 12, 2005.
+
+KLEPPMANN, M. *Designing Data-Intensive Applications*. 1. ed. Sebastopol: O’Reilly Media, 2017.
+
