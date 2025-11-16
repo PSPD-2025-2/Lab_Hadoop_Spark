@@ -205,7 +205,8 @@ Mesmo com essas limitações, o benchmark é útil para fins didáticos, pois ev
 - Como **ajustes de memória** podem trazer ganhos marginais em jobs que não são estritamente bound a RAM.
 - Que o **overhead de gerenciamento do Hadoop** é relevante, principalmente em ambientes pequenos, e deve ser considerado ao dimensionar clusters de produção.
 
-> [!IMPORTANT] Detalhes
+> [!IMPORTANT] 
+> #### Detalhes
 > Para mais informações sobre as execuções dos jobs, consulte os PDFs gerados pelo JobHistoryServer, disponíveis na seção de [anexos](./hadoop-lab/assets/) deste relatório.
 
 ## Teste de Tolerância a Falhas no Hadoop
