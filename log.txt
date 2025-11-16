@@ -1,0 +1,134 @@
+docker compose exec edge bash
+hadoop@edge:~$ hdfs dfs -rm -r -f /jobs-out-baseline
+Deleted /jobs-out-baseline
+hadoop@edge:~$ EX=$(ls /home/hadoop/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar | head -n1)
+hadoop jar "$EX" wordcount /jobs/big.txt /jobs-out-baseline
+2025-11-15 22:37:57,210 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at rm/172.18.0.5:8032
+2025-11-15 22:37:57,422 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hadoop/.staging/job_1763246233829_0001
+2025-11-15 22:37:58,066 INFO input.FileInputFormat: Total input files to process : 1
+2025-11-15 22:37:58,228 INFO mapreduce.JobSubmitter: number of splits:61
+2025-11-15 22:37:58,775 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1763246233829_0001
+2025-11-15 22:37:58,775 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2025-11-15 22:37:58,872 INFO conf.Configuration: resource-types.xml not found
+2025-11-15 22:37:58,872 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2025-11-15 22:37:59,041 INFO impl.YarnClientImpl: Submitted application application_1763246233829_0001
+2025-11-15 22:37:59,078 INFO mapreduce.Job: The url to track the job: http://rm:8088/proxy/application_1763246233829_0001/
+2025-11-15 22:37:59,078 INFO mapreduce.Job: Running job: job_1763246233829_0001
+2025-11-15 22:38:04,159 INFO mapreduce.Job: Job job_1763246233829_0001 running in uber mode : false
+2025-11-15 22:38:04,161 INFO mapreduce.Job:  map 0% reduce 0%
+2025-11-15 22:38:22,331 INFO mapreduce.Job:  map 1% reduce 0%
+2025-11-15 22:38:28,403 INFO mapreduce.Job:  map 2% reduce 0%
+2025-11-15 22:38:40,560 INFO mapreduce.Job:  map 3% reduce 0%
+2025-11-15 22:38:51,699 INFO mapreduce.Job:  map 4% reduce 0%
+2025-11-15 22:38:57,773 INFO mapreduce.Job:  map 5% reduce 0%
+2025-11-15 22:39:02,872 INFO mapreduce.Job:  map 6% reduce 0%
+2025-11-15 22:39:06,931 INFO mapreduce.Job:  map 7% reduce 0%
+2025-11-15 22:39:10,980 INFO mapreduce.Job:  map 8% reduce 0%
+2025-11-15 22:39:14,020 INFO mapreduce.Job:  map 9% reduce 0%
+2025-11-15 22:39:19,077 INFO mapreduce.Job:  map 10% reduce 0%
+2025-11-15 22:39:24,155 INFO mapreduce.Job:  map 11% reduce 0%
+2025-11-15 22:39:27,197 INFO mapreduce.Job:  map 12% reduce 0%
+2025-11-15 22:39:31,250 INFO mapreduce.Job:  map 13% reduce 0%
+2025-11-15 22:39:34,303 INFO mapreduce.Job:  map 14% reduce 0%
+2025-11-15 22:39:37,355 INFO mapreduce.Job:  map 15% reduce 0%
+2025-11-15 22:39:42,450 INFO mapreduce.Job:  map 16% reduce 0%
+2025-11-15 22:39:43,471 INFO mapreduce.Job:  map 17% reduce 0%
+2025-11-15 22:39:47,524 INFO mapreduce.Job:  map 18% reduce 0%
+2025-11-15 22:39:50,566 INFO mapreduce.Job:  map 19% reduce 0%
+2025-11-15 22:39:54,651 INFO mapreduce.Job:  map 20% reduce 0%
+2025-11-15 22:39:58,723 INFO mapreduce.Job:  map 21% reduce 0%
+2025-11-15 22:40:00,738 INFO mapreduce.Job:  map 22% reduce 0%
+2025-11-15 22:40:02,744 INFO mapreduce.Job:  map 23% reduce 0%
+2025-11-15 22:40:04,752 INFO mapreduce.Job:  map 24% reduce 0%
+2025-11-15 22:40:33,888 INFO mapreduce.Job: Task Id : attempt_1763246233829_0001_m_000005_0, Status : FAILED
+Error: org.apache.hadoop.hdfs.BlockMissingException: Could not obtain block: BP-581103421-172.18.0.2-1763235537810:blk_1073741831_1007 file=/jobs/big.txt No live nodes contain current block Block locations: DatanodeInfoWithStorage[172.18.0.3:9866,DS-4babb0e7-0d6f-49e7-8c88-f966bcb58fa5,DISK] Dead nodes:  DatanodeInfoWithStorage[172.18.0.4:9866,DS-d3f8c654-be8a-4dfc-aa54-4bde92cf0083,DISK] DatanodeInfoWithStorage[172.18.0.3:9866,DS-4babb0e7-0d6f-49e7-8c88-f966bcb58fa5,DISK]
+        at org.apache.hadoop.hdfs.DFSInputStream.refetchLocations(DFSInputStream.java:977)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:952)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:930)
+        at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:637)
+        at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:845)
+        at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:918)
+        at java.base/java.io.DataInputStream.read(DataInputStream.java:149)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.fillBuffer(UncompressedSplitLineReader.java:62)
+        at org.apache.hadoop.util.LineReader.readDefaultLine(LineReader.java:227)
+        at org.apache.hadoop.util.LineReader.readLine(LineReader.java:185)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.readLine(UncompressedSplitLineReader.java:94)
+        at org.apache.hadoop.mapreduce.lib.input.LineRecordReader.nextKeyValue(LineRecordReader.java:208)
+        at org.apache.hadoop.mapred.MapTask$NewTrackingRecordReader.nextKeyValue(MapTask.java:569)
+        at org.apache.hadoop.mapreduce.task.MapContextImpl.nextKeyValue(MapContextImpl.java:80)
+        at org.apache.hadoop.mapreduce.lib.map.WrappedMapper$Context.nextKeyValue(WrappedMapper.java:91)
+        at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:145)
+        at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:800)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:348)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+
+2025-11-15 22:40:34,925 INFO mapreduce.Job:  map 23% reduce 0%
+2025-11-15 22:40:34,931 INFO mapreduce.Job: Task Id : attempt_1763246233829_0001_m_000016_0, Status : FAILED
+Error: org.apache.hadoop.hdfs.BlockMissingException: Could not obtain block: BP-581103421-172.18.0.2-1763235537810:blk_1073741841_1017 file=/jobs/big.txt No live nodes contain current block Block locations: DatanodeInfoWithStorage[172.18.0.3:9866,DS-4babb0e7-0d6f-49e7-8c88-f966bcb58fa5,DISK] Dead nodes:  DatanodeInfoWithStorage[172.18.0.3:9866,DS-4babb0e7-0d6f-49e7-8c88-f966bcb58fa5,DISK]
+        at org.apache.hadoop.hdfs.DFSInputStream.refetchLocations(DFSInputStream.java:977)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:952)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:930)
+        at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:637)
+        at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:845)
+        at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:918)
+        at java.base/java.io.DataInputStream.read(DataInputStream.java:149)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.fillBuffer(UncompressedSplitLineReader.java:62)
+        at org.apache.hadoop.util.LineReader.readDefaultLine(LineReader.java:227)
+        at org.apache.hadoop.util.LineReader.readLine(LineReader.java:185)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.readLine(UncompressedSplitLineReader.java:94)
+        at org.apache.hadoop.mapreduce.lib.input.LineRecordReader.nextKeyValue(LineRecordReader.java:208)
+        at org.apache.hadoop.mapred.MapTask$NewTrackingRecordReader.nextKeyValue(MapTask.java:569)
+        at org.apache.hadoop.mapreduce.task.MapContextImpl.nextKeyValue(MapContextImpl.java:80)
+        at org.apache.hadoop.mapreduce.lib.map.WrappedMapper$Context.nextKeyValue(WrappedMapper.java:91)
+        at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:145)
+        at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:800)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:348)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+
+2025-11-15 22:40:39,975 INFO mapreduce.Job: Task Id : attempt_1763246233829_0001_m_000001_0, Status : FAILED
+Error: org.apache.hadoop.hdfs.BlockMissingException: Could not obtain block: BP-581103421-172.18.0.2-1763235537810:blk_1073741827_1003 file=/jobs/big.txt No live nodes contain current block Block locations: Dead nodes:  DatanodeInfoWithStorage[172.18.0.4:9866,DS-d3f8c654-be8a-4dfc-aa54-4bde92cf0083,DISK]
+        at org.apache.hadoop.hdfs.DFSInputStream.refetchLocations(DFSInputStream.java:977)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:952)
+        at org.apache.hadoop.hdfs.DFSInputStream.chooseDataNode(DFSInputStream.java:930)
+        at org.apache.hadoop.hdfs.DFSInputStream.blockSeekTo(DFSInputStream.java:637)
+        at org.apache.hadoop.hdfs.DFSInputStream.readWithStrategy(DFSInputStream.java:845)
+        at org.apache.hadoop.hdfs.DFSInputStream.read(DFSInputStream.java:918)
+        at java.base/java.io.DataInputStream.read(DataInputStream.java:149)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.fillBuffer(UncompressedSplitLineReader.java:62)
+        at org.apache.hadoop.util.LineReader.readDefaultLine(LineReader.java:227)
+        at org.apache.hadoop.util.LineReader.readLine(LineReader.java:185)
+        at org.apache.hadoop.mapreduce.lib.input.UncompressedSplitLineReader.readLine(UncompressedSplitLineReader.java:94)
+        at org.apache.hadoop.mapreduce.lib.input.LineRecordReader.nextKeyValue(LineRecordReader.java:208)
+        at org.apache.hadoop.mapred.MapTask$NewTrackingRecordReader.nextKeyValue(MapTask.java:569)
+        at org.apache.hadoop.mapreduce.task.MapContextImpl.nextKeyValue(MapContextImpl.java:80)
+        at org.apache.hadoop.mapreduce.lib.map.WrappedMapper$Context.nextKeyValue(WrappedMapper.java:91)
+        at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:145)
+        at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:800)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:348)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:178)
+        at java.base/java.security.AccessController.doPrivileged(Native Method)
+        at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1899)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:172)
+
+2025-11-15 22:40:40,979 INFO mapreduce.Job:  map 22% reduce 0%
+2025-11-15 22:40:47,029 INFO mapreduce.Job:  map 23% reduce 0%
+2025-11-15 22:40:52,061 INFO mapreduce.Job:  map 24% reduce 0%
+2025-11-15 22:40:54,073 INFO mapreduce.Job:  map 25% reduce 0%
+2025-11-15 22:40:55,081 INFO mapreduce.Job:  map 26% reduce 0%
+2025-11-15 22:40:59,141 INFO mapreduce.Job:  map 27% reduce 0%
+2025-11-15 22:41:01,153 INFO mapreduce.Job:  map 28% reduce 0%
+2025-11-15 22:41:05,191 INFO mapreduce.Job:  map 29% reduce 0%
+2025-11-15 22:41:06,209 INFO mapreduce.Job:  map 30% reduce 0%
+2025-11-15 22:41:10,252 INFO mapreduce.Job:  map 31% reduce 0%
+2025-11-15 22:41:11,257 INFO mapreduce.Job:  map 31% reduce 4%
+2025-11-15 22:41:13,285 INFO mapreduce.Job:  map 32% reduce 4%
+2025-11-15 22:41:16,324 INFO mapreduce.Job:  map 33% reduce 4%
