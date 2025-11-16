@@ -7,6 +7,8 @@
 - **Professor:** Fernando W. Cruz
 - **Integrantes do Grupo:** Gabryel Nicolas Soares de Sousa; Guilherme Westphall de Queiroz; Joel Soares Rangel; Lucas Martins Gabriel
 - **Data:** 15 de Novembro de 2025
+- **Link do Vídeo de Apresentação:** [https://youtu.be/xNV6D9LQQUA](https://youtu.be/xNV6D9LQQUA)
+- **Material da Apresentação**: [Apresentacao_Hadoop_Spark.pdf](./Apresentacao_Hadoop_Spark.pdf)
 
 > Para informações sobre a configuração do ambiente Hadoop e Spark utilizados, consulte os arquivos `hadoop-lab/README.md` e `spark-lab/README.md` neste repositório.
 
